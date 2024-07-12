@@ -100,7 +100,20 @@ void deleteList(node** head_ref)
    *head_ref = NULL;
 }
 
-void reverse()
+void reverse(node ** head_ref){
+node * curr = *head_ref;
+node * nnext=NULL;
+node * prev=NULL;
+
+while(curr!=NULL){
+    nnext=curr->next;
+    curr->next=prev;
+    prev=curr;
+    curr=nnext;
+
+}
+*head_ref=prev;
+}
 
 
 int main(){
@@ -121,7 +134,9 @@ delete_bydata(&head,5);
 print_list(&head);
 delete_bydata(&head,11);
 print_list(&head);
-deleteList(&head);
+//deleteList(&head);
+//print_list(&head);
+reverse(&head);
 print_list(&head);
 }
 
